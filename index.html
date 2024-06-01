@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    * {
+      background-color: #313131;
+      color: white;
+      font-family: poppins;
+    }
+    div {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      text-align: center;
+    }
+    button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <div><h1>ROCK , PAPER , SCISSOR</h1></div>
+    <div>You are playing against a code file . So , choose your option :</div>
+    <div id="result"></div>
+    <div>
+      <button id="rock">rock</button>
+      <button id="scissor">scissor</button>
+      <button id="paper">paper</button>
+    </div>
+    <div>
+      <button id="playagain">Play again</button>
+    </div>
+    <script>
+      let Rock = document.querySelector("#rock");
+      let Scissor = document.querySelector("#scissor");
+      let Paper = document.querySelector("#paper");
+      let result = document.querySelector("#result");
+      let playagain = document.querySelector("#playagain");
+
+      function code() {
+        let random = parseInt(Math.floor(Math.random() * (3 - 1 + 1) + 1));
+        let choice;
+        switch (random) {
+          case 1:
+            console.log("rock");
+            return "rock";
+            break;
+          case 2:
+            console.log("scissor");
+            return "scissor";
+            break;
+          case 3:
+            console.log("paper");
+            return "paper";
+            break;
+        }
+      }
+      let answer = code();
+
+      let userchoose;
+      function rock() {
+        userchoose = "rock";
+        console.log(userchoose);
+        play();
+        disableALL();
+      }
+      function paper() {
+        userchoose = "paper";
+        console.log(userchoose);
+        play();
+       disableALL();
+      }
+      function scissor() {
+        userchoose = "scissor";
+        console.log(userchoose);
+        play();
+        disableALL();
+      }
+      function reload() {
+        location.reload();
+      }
+      function disableALL (){
+        Scissor.disabled = true
+        Paper.disabled = true
+        Rock.disabled = true
+      }
+
+      Rock.addEventListener("click", rock);
+      Scissor.addEventListener("click", scissor);
+      Paper.addEventListener("click", paper);
+      playagain.addEventListener('click', reload)
+
+      function play() {
+        if (userchoose == answer) {
+          console.log("DRAW");
+          result.textContent = "result :-" + " DRAW";
+        } else if (userchoose == "rock" && answer == "paper") {
+          console.log("YOU LOSE");
+          result.textContent = "result :-" + " YOU LOSE";
+        } else if (userchoose == "rock" && answer == "scissor") {
+          console.log("YOU WIN");
+          result.textContent = "result :-" + " YOU WIN";
+        } else if (userchoose == "paper" && answer == "rock") {
+          console.log("YOU WIN");
+          result.textContent = "result :-" + " YOU WIN";
+        } else if (userchoose == "paper" && answer == "scissor") {
+          result.textContent = "result :-" + " YOU LOSE";
+        } else if (userchoose == "scissor" && answer == "rock") {
+          result.textContent = "result :-" + " YOU LOSE";
+        } else if (userchoose == "scissor" && answer == "paper") {
+          result.textContent = "result :-" + " YOU WIN";
+        }
+      }
+    </script>
+  </body>
+</html>
